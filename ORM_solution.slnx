@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MedicalApp.Console/MedicalApp.Console.csproj" />
+  <Project Path="MedicalApp.Entities/MedicalApp.Entities.csproj" />
+  <Project Path="ORM.Core/ORM.Core.csproj" />
+</Solution>

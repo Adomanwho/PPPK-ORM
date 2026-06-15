@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|c:\\users\\lovre\\desktop\\faks sve\\algebra 5. semestar\\pristup podacima iz programskog koda\\projekti\\medicalapp.console\\medicalapp.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|solutionrelative:medicalapp.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Program.cs",
+              "RelativeDocumentMoniker": "MedicalApp.Console\\Program.cs",
+              "ToolTip": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Program.cs",
+              "RelativeToolTip": "MedicalApp.Console\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T01:49:26.961Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

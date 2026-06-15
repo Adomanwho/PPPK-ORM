@@ -1,0 +1,12 @@
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\bin\Debug\net8.0\ORM.Core.deps.json
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\bin\Debug\net8.0\ORM.Core.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\bin\Debug\net8.0\ORM.Core.pdb
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ORM.Core.csproj.AssemblyReference.cache
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ORM.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ORM.Core.AssemblyInfoInputs.cache
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ORM.Core.AssemblyInfo.cs
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ORM.Core.csproj.CoreCompileInputs.cache
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ORM.Core.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\refint\ORM.Core.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ORM.Core.pdb
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\ORM.Core\obj\Debug\net8.0\ref\ORM.Core.dll

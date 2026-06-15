@@ -1,0 +1,15 @@
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\bin\Debug\net8.0\MedicalApp.Entities.deps.json
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\bin\Debug\net8.0\MedicalApp.Entities.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\bin\Debug\net8.0\MedicalApp.Entities.pdb
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\bin\Debug\net8.0\ORM.Core.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\bin\Debug\net8.0\ORM.Core.pdb
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.csproj.AssemblyReference.cache
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.AssemblyInfoInputs.cache
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.AssemblyInfo.cs
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalA.68541026.Up2Date
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\refint\MedicalApp.Entities.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.pdb
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\ref\MedicalApp.Entities.dll

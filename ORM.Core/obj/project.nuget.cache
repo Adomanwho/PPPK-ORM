@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "6EyOBy/tR08=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\ORM.Core\\ORM.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lovre\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Lovre\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Lovre\\.nuget\\packages\\npgsql\\10.0.3\\npgsql.10.0.3.nupkg.sha512",
+    "C:\\Users\\Lovre\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.11\\system.diagnostics.diagnosticsource.9.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}
