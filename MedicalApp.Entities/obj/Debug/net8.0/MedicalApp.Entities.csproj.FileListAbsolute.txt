@@ -13,3 +13,4 @@ C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programs
 C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\refint\MedicalApp.Entities.dll
 C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.pdb
 C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\ref\MedicalApp.Entities.dll
+C:\Users\Lovre\Desktop\Faks sve\Algebra 5. semestar\Pristup podacima iz programskog koda\Projekti\MedicalApp.Console\MedicalApp.Entities\obj\Debug\net8.0\MedicalApp.Entities.sourcelink.json
