@@ -38,11 +38,13 @@ public class DbSet<T> where T : class, new()
         var pk  = _metadata.PrimaryKey;
         var sql = $"SELECT * FROM {_metadata.QualifiedTableName} WHERE \"{pk.ColumnName}\" = @pk LIMIT 1";
 
-        using var cmd = _context.CreateCommand(sql);
-        cmd.Parameters.AddWithValue("@pk", pkValue);
-
-        using var reader  = cmd.ExecuteReader();
-        var results = Materializer.Materialize<T>(reader, _metadata);
+        List<T> results;
+        using (var cmd = _context.CreateCommand(sql))
+        {
+            cmd.Parameters.AddWithValue("@pk", pkValue);
+            using var reader = cmd.ExecuteReader();
+            results = Materializer.Materialize<T>(reader, _metadata);
+        } // reader i cmd zatvoreni — konekcija slobodna za sljedeći upit
 
         if (results.Count == 0) return null;
 
@@ -81,18 +83,20 @@ public class DbSet<T> where T : class, new()
     internal List<T> BuildAndExecute(QueryBuilder<T> builder)
     {
         var query = builder.Build();
+        List<T> entities;
 
-        using var cmd = _context.CreateCommand(query.Sql);
-        foreach (var p in query.Parameters)
-            cmd.Parameters.Add(p);
+        using (var cmd = _context.CreateCommand(query.Sql))
+        {
+            foreach (var p in query.Parameters)
+                cmd.Parameters.Add(p);
 
-        using var reader  = cmd.ExecuteReader();
-        var entities = Materializer.Materialize<T>(reader, _metadata);
+            using var reader = cmd.ExecuteReader();
+            entities = Materializer.Materialize<T>(reader, _metadata);
+        } // reader i cmd zatvoreni — konekcija slobodna za eager loading upite
 
         foreach (var entity in entities)
             _context.ChangeTracker.Track(entity, _metadata);
 
-        // Eager loading: za svaki Include učitaj navigacijska svojstva
         if (builder.Includes.Count > 0)
             LoadIncludes(entities, builder.Includes);
 
