@@ -46,7 +46,7 @@ public static class PacijentIzbornik
             System.Console.WriteLine($"  {new string('-', 70)}");
             foreach (var p in pacijenti)
                 System.Console.WriteLine(
-                    $"  {p.Id,-5} {p.Prezime + " " + p.Ime,-25} {p.OIB,-12} {p.DatumRodjenja.ToString("dd.MM.yyyy"),-15} {p.Spol,-8}");
+                    $"  {p.Id,-5} {p.Ime + " " + p.Prezime,-25} {p.OIB,-12} {p.DatumRodjenja.ToString("dd.MM.yyyy"),-15} {p.Spol,-8}");
         }
 
         ConsoleHelper.PritisniEnter();

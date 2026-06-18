@@ -63,10 +63,12 @@ public static class PrepisanLijekIzbornik
             System.Console.WriteLine($"  {new string('-', 85)}");
             foreach (var s in stavke)
             {
-                var naziv  = s.Lijek?.Naziv ?? $"ID {s.LijekId}";
-                var do_    = s.DatumZavrsetka.HasValue ? s.DatumZavrsetka.Value.ToString("dd.MM.yyyy") : "aktivno";
+                var naziv = s.Lijek?.Naziv ?? $"ID {s.LijekId}";
+                var do_   = s.DatumZavrsetka.HasValue ? s.DatumZavrsetka.Value.ToString("dd.MM.yyyy") : "aktivno";
                 System.Console.WriteLine(
                     $"  {s.Id,-5} {naziv,-20} {s.Doza,-12} {s.Ucestalost,-20} {s.DatumPrepisivanja.ToString("dd.MM.yyyy"),-12} {do_,-12}");
+                if (!string.IsNullOrWhiteSpace(s.Napomena))
+                    System.Console.WriteLine($"        Napomena: {s.Napomena}");
             }
         }
 
@@ -89,23 +91,46 @@ public static class PrepisanLijekIzbornik
         ConsoleHelper.Info("Dostupni liječnici:");
         foreach (var l in lijecnici)
             System.Console.WriteLine($"    {l.Id}. {l}");
-        var lijecnikId = ConsoleHelper.CitajInt("ID liječnika");
+
+        int lijecnikId;
+        while (true)
+        {
+            lijecnikId = ConsoleHelper.CitajInt("ID liječnika");
+            if (lijecnici.Any(l => l.Id == lijecnikId)) break;
+            ConsoleHelper.Greška("Odabrani liječnik ne postoji. Pokušajte ponovo.");
+        }
 
         var lijekovi = ctx.Lijekovi.OrderBy(l => l.Naziv).ToList();
         ConsoleHelper.Info("Dostupni lijekovi:");
         foreach (var l in lijekovi)
             System.Console.WriteLine($"    {l.Id}. {l}");
-        var lijekId = ConsoleHelper.CitajInt("ID lijeka");
+
+        int lijekId;
+        while (true)
+        {
+            lijekId = ConsoleHelper.CitajInt("ID lijeka");
+            if (lijekovi.Any(l => l.Id == lijekId)) break;
+            ConsoleHelper.Greška("Odabrani lijek ne postoji. Pokušajte ponovo.");
+        }
+
+        var datumPrepisivanja = ConsoleHelper.CitajDatum("Datum prepisivanja");
+        DateTime? datumZavrsetka;
+        while (true)
+        {
+            datumZavrsetka = ConsoleHelper.CitajDatumOpcional("Datum završetka terapije");
+            if (!datumZavrsetka.HasValue || datumZavrsetka.Value > datumPrepisivanja) break;
+            ConsoleHelper.Greška("Datum završetka mora biti nakon datuma prepisivanja. Pokušajte ponovo.");
+        }
 
         var unos = new PrepisanLijek
         {
-            PacijentId         = pacijentId,
-            LijecnikId         = lijecnikId,
-            LijekId            = lijekId,
-            Doza               = ConsoleHelper.CitajString("Doza (npr. 500mg, 2 tablete)"),
-            Ucestalost         = ConsoleHelper.CitajString("Učestalost (npr. 3 puta dnevno)"),
-            DatumPrepisivanja  = ConsoleHelper.CitajDatum("Datum prepisivanja"),
-            DatumZavrsetka    = ConsoleHelper.CitajDatumOpcional("Datum završetka terapije"),
+            PacijentId        = pacijentId,
+            LijecnikId        = lijecnikId,
+            LijekId           = lijekId,
+            Doza              = ConsoleHelper.CitajString("Doza (npr. 500mg, 2 tablete)"),
+            Ucestalost        = ConsoleHelper.CitajString("Učestalost (npr. 3 puta dnevno)"),
+            DatumPrepisivanja = datumPrepisivanja,
+            DatumZavrsetka    = datumZavrsetka,
             Napomena          = ConsoleHelper.CitajStringOpcional("Napomena")
         };
 
@@ -171,7 +196,22 @@ public static class PrepisanLijekIzbornik
             return;
         }
 
-        unos.DatumZavrsetka = ConsoleHelper.CitajDatum("Datum završetka terapije");
+        if (unos.DatumZavrsetka.HasValue)
+        {
+            ConsoleHelper.Info($"Datum već unesen: {unos.DatumZavrsetka.Value:dd.MM.yyyy}.");
+            ConsoleHelper.PritisniEnter();
+            return;
+        }
+
+        DateTime novDatum;
+        while (true)
+        {
+            novDatum = ConsoleHelper.CitajDatum("Datum završetka terapije");
+            if (novDatum > unos.DatumPrepisivanja) break;
+            ConsoleHelper.Greška("Datum završetka mora biti nakon datuma prepisivanja. Pokušajte ponovo.");
+        }
+
+        unos.DatumZavrsetka = novDatum;
 
         try
         {

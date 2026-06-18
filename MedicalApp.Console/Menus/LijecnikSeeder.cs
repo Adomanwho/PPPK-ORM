@@ -14,7 +14,7 @@ public static class LijecnikSeeder
         var postoje = ctx.Lijecnici.ToList();
         if (postoje.Count > 0) return;
 
-        ConsoleHelper.Naslov("PRVI POKRETANJE — Unos liječnika");
+        ConsoleHelper.Naslov("PRVO POKRETANJE — Unos liječnika");
         ConsoleHelper.Info("U bazi nema liječnika. Unesite barem jednog liječnika.");
         ConsoleHelper.Info("Liječnici se definiraju samo pri prvom pokretanju.");
         System.Console.WriteLine();

@@ -87,8 +87,21 @@ public static class SpecijalistickiPregledIzbornik
         foreach (var l in lijecnici)
             System.Console.WriteLine($"    {l.Id}. {l}");
 
-        var lijecnikId = ConsoleHelper.CitajInt("ID liječnika koji zakazuje");
-        var specijalistId = ConsoleHelper.CitajInt("ID liječnika specijalista koji provodi pregled");
+        int lijecnikId;
+        while (true)
+        {
+            lijecnikId = ConsoleHelper.CitajInt("ID liječnika koji zakazuje");
+            if (lijecnici.Any(l => l.Id == lijecnikId)) break;
+            ConsoleHelper.Greška("Odabrani liječnik ne postoji. Pokušajte ponovo.");
+        }
+
+        int specijalistId;
+        while (true)
+        {
+            specijalistId = ConsoleHelper.CitajInt("ID liječnika specijalista koji provodi pregled");
+            if (lijecnici.Any(l => l.Id == specijalistId)) break;
+            ConsoleHelper.Greška("Odabrani specijalist ne postoji. Pokušajte ponovo.");
+        }
 
         var pregled = new SpecijalistickiPregled
         {

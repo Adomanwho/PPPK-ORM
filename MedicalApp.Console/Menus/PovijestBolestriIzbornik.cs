@@ -66,6 +66,8 @@ public static class PovijestBolestriIzbornik
                 var lijecnik = s.Lijecnik is not null ? s.Lijecnik.ToString() : $"ID {s.LijecnikId}";
                 System.Console.WriteLine(
                     $"  {s.Id,-5} {s.Dijagnoza,-30} {s.DatumOd.ToString("dd.MM.yyyy"),-12} {datumDo,-12} {lijecnik,-25}");
+                if (!string.IsNullOrWhiteSpace(s.Napomena))
+                    System.Console.WriteLine($"        Napomena: {s.Napomena}");
             }
         }
 
@@ -89,15 +91,30 @@ public static class PovijestBolestriIzbornik
         foreach (var l in lijecnici)
             System.Console.WriteLine($"    {l.Id}. {l}");
 
-        var lijecnikId = ConsoleHelper.CitajInt("ID liječnika");
+        int lijecnikId;
+        while (true)
+        {
+            lijecnikId = ConsoleHelper.CitajInt("ID liječnika");
+            if (lijecnici.Any(l => l.Id == lijecnikId)) break;
+            ConsoleHelper.Greška("Odabrani liječnik ne postoji. Pokušajte ponovo.");
+        }
+
+        var datumOd = ConsoleHelper.CitajDatum("Datum od");
+        DateTime? datumDo;
+        while (true)
+        {
+            datumDo = ConsoleHelper.CitajDatumOpcional("Datum do (ostavite prazno ako traje)");
+            if (!datumDo.HasValue || datumDo.Value > datumOd) break;
+            ConsoleHelper.Greška("Datum do mora biti nakon datuma od. Pokušajte ponovo.");
+        }
 
         var unos = new PovijestBolesti
         {
             PacijentId = pacijentId,
             LijecnikId = lijecnikId,
             Dijagnoza  = ConsoleHelper.CitajString("Dijagnoza"),
-            DatumOd   = ConsoleHelper.CitajDatum("Datum od"),
-            DatumDo   = ConsoleHelper.CitajDatumOpcional("Datum do (ostavite prazno ako traje)"),
+            DatumOd   = datumOd,
+            DatumDo   = datumDo,
             Napomena  = ConsoleHelper.CitajStringOpcional("Napomena")
         };
 
@@ -162,7 +179,22 @@ public static class PovijestBolestriIzbornik
             return;
         }
 
-        unos.DatumDo = ConsoleHelper.CitajDatum("Datum završetka");
+        if (unos.DatumDo.HasValue)
+        {
+            ConsoleHelper.Info($"Datum već unesen: {unos.DatumDo.Value:dd.MM.yyyy}.");
+            ConsoleHelper.PritisniEnter();
+            return;
+        }
+
+        DateTime novDatum;
+        while (true)
+        {
+            novDatum = ConsoleHelper.CitajDatum("Datum završetka");
+            if (novDatum > unos.DatumOd) break;
+            ConsoleHelper.Greška("Datum završetka mora biti nakon datuma od. Pokušajte ponovo.");
+        }
+
+        unos.DatumDo = novDatum;
 
         try
         {
