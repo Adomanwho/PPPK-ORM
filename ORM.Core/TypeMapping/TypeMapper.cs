@@ -24,10 +24,10 @@ public static class TypeMapper
         [typeof(byte[])]         = "BYTEA",
     };
 
-    /// <summary>
-    /// Određuje SQL tip za dani property.
-    /// Poštuje redoslijed: [Column(TypeName)] → [MaxLength] → enum → Nullable → Map.
-    /// </summary>
+    /*
+    Određuje SQL tip za dani property.
+    Poštuje redoslijed: [Column(TypeName)] → [MaxLength] → enum → Nullable → Map.
+    */
     public static string Resolve(PropertyInfo property)
     {
         var columnAttr = property.GetCustomAttribute<ColumnAttribute>();

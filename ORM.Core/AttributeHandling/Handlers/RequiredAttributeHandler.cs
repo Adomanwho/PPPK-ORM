@@ -2,11 +2,11 @@ using ORM.Core.Attributes;
 
 namespace ORM.Core.AttributeHandling.Handlers;
 
-/// <summary>
-/// Obrađuje [Required] — dodaje NOT NULL fragment.
-/// PK stupci su implicitno NOT NULL pa ih ovaj handler preskoči
-/// (PRIMARY KEY već implicira NOT NULL u PostgreSQL-u).
-/// </summary>
+/*
+Obrađuje [Required] — dodaje NOT NULL fragment.
+PK stupci su implicitno NOT NULL pa ih ovaj handler preskoči
+(PRIMARY KEY već implicira NOT NULL u PostgreSQL-u).
+*/
 public class RequiredAttributeHandler : IAttributeHandler
 {
     public bool CanHandle(Attribute attribute) => attribute is RequiredAttribute;

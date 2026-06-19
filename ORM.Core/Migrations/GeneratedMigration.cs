@@ -2,10 +2,10 @@ using Npgsql;
 
 namespace ORM.Core.Migrations;
 
-/// <summary>
-/// Konkretna Migration koja izvršava SQL stringove generirane od strane MigrationGenerator-a.
-/// Ručno pisane migracije nasljeđuju apstraktnu Migration klasu direktno.
-/// </summary>
+/*
+Konkretna Migration koja izvršava SQL stringove generirane od strane MigrationGenerator-a.
+Ručno pisane migracije nasljeđuju apstraktnu Migration klasu direktno.
+*/
 public class GeneratedMigration : Migration
 {
     private readonly string _name;
@@ -36,7 +36,7 @@ public class GeneratedMigration : Migration
             Execute(connection, sql);
     }
 
-    /// <summary>Ispisuje SQL koji će se izvršiti — korisno za pregled prije primjene.</summary>
+    // Ispisuje SQL koji će se izvršiti — korisno za pregled prije primjene.
     public void Preview()
     {
         Console.WriteLine($"=== Migration: {_name} ===");

@@ -2,9 +2,7 @@ using ORM.Core.Attributes;
 
 namespace ORM.Core.AttributeHandling.Handlers;
 
-/// <summary>
-/// Obrađuje [Unique] — dodaje UNIQUE fragment.
-/// </summary>
+// Obrađuje [Unique] — dodaje UNIQUE fragment.
 public class UniqueAttributeHandler : IAttributeHandler
 {
     public bool CanHandle(Attribute attribute) => attribute is UniqueAttribute;

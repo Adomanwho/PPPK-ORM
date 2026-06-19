@@ -1,10 +1,12 @@
 using MedicalApp.Console.Data;
+using ORM.Core.Migrations;
+using System.Reflection;
 
 namespace MedicalApp.Console.Menus;
 
 public static class GlavniIzbornik
 {
-    public static void Pokreni(MedicalDbContext ctx)
+    public static void Pokreni(MedicalDbContext ctx, MigrationRunner runner, Assembly assembly)
     {
         while (true)
         {
@@ -28,17 +30,8 @@ public static class GlavniIzbornik
                 case 3: LijekIzbornik.Pokreni(ctx); break;
                 case 4: PrepisanLijekIzbornik.Pokreni(ctx); break;
                 case 5: SpecijalistickiPregledIzbornik.Pokreni(ctx); break;
-                case 6: PrikaziMigracije(ctx); break;
+                case 6: MigrationIzbornik.Pokreni(runner, assembly); break;
             }
         }
-    }
-
-    private static void PrikaziMigracije(MedicalDbContext ctx)
-    {
-        ConsoleHelper.Naslov("STATUS MIGRACIJA");
-        // MigrationRunner koristi vlastitu konekciju — demonstracija statusa
-        ConsoleHelper.Info("Za detaljan status pokrenite runner.PrintStatus(Assembly.GetExecutingAssembly())");
-        ConsoleHelper.Info("u development modu (vidjeti Program.cs).");
-        ConsoleHelper.PritisniEnter();
     }
 }

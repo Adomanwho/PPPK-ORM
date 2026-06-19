@@ -4,10 +4,10 @@ namespace ORM.Core.Attributes;
 public sealed class ColumnAttribute : Attribute
 {
     public string Name { get; }
-    /// <summary>
-    /// Opcionalno ručno zadavanje SQL tipa (npr. "VARCHAR(100)").
-    /// Ako nije zadano, TypeMapper određuje tip automatski.
-    /// </summary>
+    /*
+    Opcionalno ručno zadavanje SQL tipa (npr. "VARCHAR(100)").
+    Ako nije zadano, TypeMapper određuje tip automatski.
+    */
     public string? TypeName { get; set; }
     public int Order { get; set; }
 

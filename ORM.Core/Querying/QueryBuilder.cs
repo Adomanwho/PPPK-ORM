@@ -5,10 +5,10 @@ using System.Text;
 
 namespace ORM.Core.Querying;
 
-/// <summary>
-/// Builder pattern za SELECT upite nad entitetom T.
-/// Metode se ulančavaju (fluent API), a Build() vraća finalni SQL s parametrima.
-/// </summary>
+/*
+Builder pattern za SELECT upite nad entitetom T.
+Metode se ulančavaju (fluent API), a Build() vraća finalni SQL s parametrima.
+*/
 public class QueryBuilder<T>
 {
     private readonly EntityMetadata _metadata;
@@ -63,10 +63,10 @@ public class QueryBuilder<T>
 
     // ── Eager loading ────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Označava navigacijsko svojstvo za eager loading.
-    /// DbSet koristi ovu listu pri izvršavanju upita.
-    /// </summary>
+    /*
+    Označava navigacijsko svojstvo za eager loading.
+    DbSet koristi ovu listu pri izvršavanju upita.
+    */
     public QueryBuilder<T> Include<TNav>(Expression<Func<T, TNav>> navigation)
     {
         if (navigation.Body is MemberExpression m)
@@ -105,7 +105,7 @@ public class QueryBuilder<T>
         };
     }
 
-    /// <summary>Lista navigacijskih svojstava za eager loading (čita DbSet).</summary>
+    // Lista navigacijskih svojstava za eager loading (čita DbSet).
     public IReadOnlyList<string> Includes => _includes.AsReadOnly();
 
     // ── Helpers ──────────────────────────────────────────────────────────────

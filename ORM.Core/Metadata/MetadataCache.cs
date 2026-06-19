@@ -136,10 +136,10 @@ public static class MetadataCache
         };
     }
 
-    /// <summary>
-    /// Property je navigacijsko svojstvo ako mu tip nije scalar (nije u TypeMapper-u,
-    /// nije enum, nije Nullable scalar) i nije string/byte[].
-    /// </summary>
+    /*
+    Property je navigacijsko svojstvo ako mu tip nije scalar (nije u TypeMapper-u,
+    nije enum, nije Nullable scalar) i nije string/byte[].
+    */
     private static bool IsNavigationProperty(PropertyInfo prop)
     {
         var t = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;

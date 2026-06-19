@@ -21,6 +21,9 @@ public class Pacijent
     [Column("Prezime")]
     public string Prezime { get; set; } = null!;
 
+    [NotMapped]
+    public string PunoIme => $"{Ime} {Prezime}";
+
     [Required]
     [Unique]
     [MaxLength(11)]
@@ -44,6 +47,10 @@ public class Pacijent
     [MaxLength(255)]
     [Column("AdresaPrebivalista")]
     public string AdresaPrebivalista { get; set; } = null!;
+
+    [MaxLength(20)]
+    [Column("BrojTelefona")]
+    public string? BrojTelefona { get; set; }
 
     // Navigacijska svojstva
     [InverseProperty(nameof(PovijestBolesti.Pacijent))]

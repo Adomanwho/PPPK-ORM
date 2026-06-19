@@ -2,23 +2,23 @@ using Npgsql;
 
 namespace ORM.Core.Migrations;
 
-/// <summary>
-/// Apstraktna baza za svaku migraciju.
-/// Konkretne migracije nasljeđuju ovu klasu i implementiraju Up i Down.
-/// Konvencija imenovanja: "YYYYMMDD_HHMMSS_Naziv" — runner sortira po imenu klase.
-/// </summary>
+/*
+Apstraktna baza za svaku migraciju.
+Konkretne migracije nasljeđuju ovu klasu i implementiraju Up i Down.
+Konvencija imenovanja: "YYYYMMDD_HHMMSS_Naziv" — runner sortira po imenu klase.
+*/
 public abstract class Migration
 {
-    /// <summary>Ime migracije — defaultno ime klase, može se override-ati.</summary>
+    // Ime migracije — defaultno ime klase, može se override-ati.
     public virtual string Name => GetType().Name;
 
-    /// <summary>Primijeni migraciju (naprijed).</summary>
+    // Primijeni migraciju (naprijed).
     public abstract void Up(NpgsqlConnection connection);
 
-    /// <summary>Poništi migraciju (unazad).</summary>
+    // Poništi migraciju (unazad).
     public abstract void Down(NpgsqlConnection connection);
 
-    /// <summary>Pomoćna metoda za izvršavanje SQL-a unutar Up/Down.</summary>
+    // Pomoćna metoda za izvršavanje SQL-a unutar Up/Down.
     protected static void Execute(NpgsqlConnection connection, string sql)
     {
         using var cmd = new NpgsqlCommand(sql, connection);

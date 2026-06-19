@@ -6,10 +6,10 @@ public record class ColumnMetadata
 {
     public PropertyInfo Property { get; init; } = null!;
 
-    /// <summary>Ime stupca u bazi (iz [Column] ili ime propertyja).</summary>
+    // Ime stupca u bazi (iz [Column] ili ime propertyja).
     public string ColumnName { get; init; } = null!;
 
-    /// <summary>SQL tip stupca (npr. "VARCHAR(100)", "INT", "TIMESTAMP WITHOUT TIME ZONE").</summary>
+    // SQL tip stupca (npr. "VARCHAR(100)", "INT", "TIMESTAMP WITHOUT TIME ZONE").
     public string SqlType { get; init; } = null!;
 
     public bool IsPrimaryKey { get; init; }
@@ -18,6 +18,6 @@ public record class ColumnMetadata
     public bool IsUnique { get; init; }
     public bool IsNullable { get; init; }
 
-    /// <summary>SQL izraz za DEFAULT (npr. "NOW()", "'active'"). Null znači bez DEFAULT-a.</summary>
+    // SQL izraz za DEFAULT (npr. "NOW()", "'active'"). Null znači bez DEFAULT-a.
     public string? DefaultSqlExpression { get; init; }
 }

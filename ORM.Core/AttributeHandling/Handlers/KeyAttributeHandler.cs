@@ -2,10 +2,10 @@ using ORM.Core.Attributes;
 
 namespace ORM.Core.AttributeHandling.Handlers;
 
-/// <summary>
-/// Obrađuje [Key] — dodaje PRIMARY KEY fragment.
-/// Identity (GENERATED ALWAYS AS IDENTITY) dodaje DatabaseGeneratedAttributeHandler.
-/// </summary>
+/*
+Obrađuje [Key] — dodaje PRIMARY KEY fragment.
+Identity (GENERATED ALWAYS AS IDENTITY) dodaje DatabaseGeneratedAttributeHandler.
+*/
 public class KeyAttributeHandler : IAttributeHandler
 {
     public bool CanHandle(Attribute attribute) => attribute is KeyAttribute;

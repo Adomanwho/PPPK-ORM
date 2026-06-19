@@ -15,7 +15,7 @@ public class Lijek
     [Column("Naziv")]
     public string Naziv { get; set; } = null!;
 
-    /// <summary>Aktivna supstanca / generički naziv.</summary>
+    //Aktivna supstanca / generički naziv.</summary>
     [MaxLength(200)]
     [Column("AktivnaTvar")]
     public string? AktivnaTvar { get; set; }

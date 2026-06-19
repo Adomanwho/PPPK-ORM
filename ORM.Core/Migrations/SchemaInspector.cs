@@ -22,10 +22,10 @@ public class DbConstraintInfo
     public string? ForeignColumnName { get; init; }
 }
 
-/// <summary>
-/// Čita trenutno stanje sheme Postgres baze putem information_schema.
-/// Koristi se u MigrationGenerator-u za diff s EntityMetadata.
-/// </summary>
+/*
+Čita trenutno stanje sheme Postgres baze putem information_schema.
+Koristi se u MigrationGenerator-u za diff s EntityMetadata.
+*/
 public class SchemaInspector
 {
     private readonly NpgsqlConnection _connection;
@@ -35,7 +35,7 @@ public class SchemaInspector
         _connection = connection;
     }
 
-    /// <summary>Vraća lista svih tablica u public shemi.</summary>
+    // Vraća lista svih tablica u public shemi.
     public List<string> GetTableNames()
     {
         const string sql = """
@@ -55,7 +55,7 @@ public class SchemaInspector
         return tables;
     }
 
-    /// <summary>Vraća sve stupce za danu tablicu.</summary>
+    // Vraća sve stupce za danu tablicu.
     public List<DbColumnInfo> GetColumns(string tableName)
     {
         const string sql = """
@@ -92,7 +92,7 @@ public class SchemaInspector
         return columns;
     }
 
-    /// <summary>Vraća sve constraint-e (PK, UNIQUE, FK) za danu tablicu.</summary>
+    // Vraća sve constraint-e (PK, UNIQUE, FK) za danu tablicu.
     public List<DbConstraintInfo> GetConstraints(string tableName)
     {
         const string sql = """
@@ -135,7 +135,7 @@ public class SchemaInspector
         return constraints;
     }
 
-    /// <summary>Vraća sve stupce za sve tablice — ključ je ime tablice.</summary>
+    // Vraća sve stupce za sve tablice — ključ je ime tablice.
     public Dictionary<string, List<DbColumnInfo>> GetAllColumns()
     {
         var tables = GetTableNames();

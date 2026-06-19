@@ -22,13 +22,13 @@ public class PrepisanLijek
     [Column("LijekId")]
     public int LijekId { get; set; }
 
-    /// <summary>Npr. "500mg", "2 tablete", "10 jedinica".</summary>
+    //Npr. "500mg", "2 tablete", "10 jedinica".
     [Required]
     [MaxLength(100)]
     [Column("Doza")]
     public string Doza { get; set; } = null!;
 
-    /// <summary>Npr. "3 puta dnevno", "svaki drugi dan", "jednom u dva tjedna".</summary>
+    //Npr. "3 puta dnevno", "svaki drugi dan", "jednom u dva tjedna".
     [Required]
     [MaxLength(150)]
     [Column("Ucestalost")]
@@ -38,7 +38,7 @@ public class PrepisanLijek
     [Column("DatumPrepisivanja")]
     public DateTime DatumPrepisivanja { get; set; }
 
-    /// <summary>Null znači terapija još traje.</summary>
+    //Null znači terapija još traje.
     [Column("DatumZavrsetka")]
     public DateTime? DatumZavrsetka { get; set; }
 

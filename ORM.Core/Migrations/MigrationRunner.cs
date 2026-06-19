@@ -3,15 +3,16 @@ using System.Reflection;
 
 namespace ORM.Core.Migrations;
 
-/// <summary>
-/// Izvršava migracije naprijed (Migrate) i unazad (Rollback).
-/// Prati izvršene migracije u "__Migrations" tablici u bazi.
-/// Migracije se sortiraju po imenu klase — konvencija: "YYYYMMDD_HHMMSS_Naziv".
-/// Uz ručno pisane Migration podklase, runner može primiti i GeneratedMigration instance.
-/// </summary>
+/*
+Izvršava migracije naprijed (Migrate) i unazad (Rollback).
+Prati izvršene migracije u "__Migrations" tablici u bazi.
+Migracije se sortiraju po imenu klase — konvencija: "YYYYMMDD_HHMMSS_Naziv".
+Uz ručno pisane Migration podklase, runner može primiti i GeneratedMigration instance.
+*/
 public class MigrationRunner
 {
     private readonly NpgsqlConnection _connection;
+    private readonly Dictionary<string, Migration> _runtimeMigrations = new();
 
     public MigrationRunner(NpgsqlConnection connection)
     {
@@ -19,11 +20,16 @@ public class MigrationRunner
         EnsureHistoryTable();
     }
 
+    /*
+    Registrira runtime migraciju (npr. GeneratedMigration) da bude dostupna za rollback.
+    Pozovi odmah nakon kreiranja GeneratedMigration, bez obzira primjenjuješ li je ili ne.
+    */
+    public void RegisterMigration(Migration migration) =>
+        _runtimeMigrations[migration.Name] = migration;
+
     // ── Migrate (naprijed) ───────────────────────────────────────────────────
 
-    /// <summary>
-    /// Pronalazi sve Migration podklase u danom assembly-ju i izvršava one koje još nisu primijenjene.
-    /// </summary>
+    // Pronalazi sve Migration podklase u danom assembly-ju i izvršava one koje još nisu primijenjene.
     public void Migrate(Assembly assembly)
     {
         var migrations = DiscoverMigrations(assembly);
@@ -43,7 +49,7 @@ public class MigrationRunner
             ApplyUp(migration);
     }
 
-    /// <summary>Izvršava jednu konkretnu migraciju naprijed (npr. GeneratedMigration).</summary>
+    // Izvršava jednu konkretnu migraciju naprijed (npr. GeneratedMigration).
     public void Migrate(Migration migration)
     {
         var applied = GetAppliedMigrations();
@@ -59,7 +65,7 @@ public class MigrationRunner
 
     // ── Rollback (unazad) ────────────────────────────────────────────────────
 
-    /// <summary>Poništava zadnju primijenjenu migraciju.</summary>
+    // Poništava zadnju primijenjenu migraciju.
     public void Rollback(Assembly assembly)
     {
         var applied = GetAppliedMigrations();
@@ -70,19 +76,18 @@ public class MigrationRunner
         }
 
         var lastName  = applied.Last();
-        var migration = DiscoverMigrations(assembly)
-            .FirstOrDefault(m => m.Name == lastName);
+        var migration = FindMigration(lastName, assembly);
 
         if (migration is null)
         {
-            Console.WriteLine($"Migracija '{lastName}' nije pronađena u assembly-ju.");
+            Console.WriteLine($"Migracija '{lastName}' nije pronađena.");
             return;
         }
 
         ApplyDown(migration);
     }
 
-    /// <summary>Poništava N zadnjih primijenjenih migracija.</summary>
+    // Poništava N zadnjih primijenjenih migracija.
     public void Rollback(Assembly assembly, int steps)
     {
         for (int i = 0; i < steps; i++)
@@ -91,19 +96,34 @@ public class MigrationRunner
             if (applied.Count == 0) break;
 
             var lastName  = applied.Last();
-            var migration = DiscoverMigrations(assembly)
-                .FirstOrDefault(m => m.Name == lastName);
+            var migration = FindMigration(lastName, assembly);
 
             if (migration is null) break;
             ApplyDown(migration);
         }
     }
 
+    /*
+    Traži migraciju najprije u runtime rječniku (GeneratedMigration),
+    pa tek onda u assembly-ju (ručno pisane klase).
+    */
+    private Migration? FindMigration(string name, Assembly assembly)
+    {
+        if (_runtimeMigrations.TryGetValue(name, out var runtime))
+            return runtime;
+
+        return DiscoverMigrations(assembly).FirstOrDefault(m => m.Name == name);
+    }
+
     // ── Status ───────────────────────────────────────────────────────────────
 
     public void PrintStatus(Assembly assembly)
     {
-        var all     = DiscoverMigrations(assembly);
+        var all = DiscoverMigrations(assembly)
+            .Concat(_runtimeMigrations.Values)
+            .DistinctBy(m => m.Name)
+            .OrderBy(m => m.Name)
+            .ToList();
         var applied = GetAppliedMigrations().ToHashSet();
 
         Console.WriteLine("\n=== Status migracija ===");
@@ -232,10 +252,10 @@ public class MigrationRunner
 
     // ── Discovery ────────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Pronalazi sve konkretne podklase Migration u danom assembly-ju,
-    /// sortira ih po imenu (YYYYMMDD_HHMMSS konvencija osigurava kronološki red).
-    /// </summary>
+    /*
+    Pronalazi sve konkretne podklase Migration u danom assembly-ju,
+    sortira ih po imenu (YYYYMMDD_HHMMSS konvencija osigurava kronološki red).
+    */
     private static List<Migration> DiscoverMigrations(Assembly assembly)
     {
         return assembly.GetTypes()

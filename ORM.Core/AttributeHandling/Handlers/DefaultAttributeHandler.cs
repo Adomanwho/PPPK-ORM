@@ -2,9 +2,7 @@ using ORM.Core.Attributes;
 
 namespace ORM.Core.AttributeHandling.Handlers;
 
-/// <summary>
-/// Obrađuje [Default("sql_izraz")] — dodaje DEFAULT fragment s SQL izrazom.
-/// </summary>
+// Obrađuje [Default("sql_izraz")] — dodaje DEFAULT fragment s SQL izrazom.
 public class DefaultAttributeHandler : IAttributeHandler
 {
     public bool CanHandle(Attribute attribute) => attribute is DefaultAttribute;

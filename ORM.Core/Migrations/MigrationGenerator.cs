@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ORM.Core.Migrations;
 
-/// <summary>
-/// Uspoređuje EntityMetadata s trenutnim stanjem baze (SchemaInspector)
-/// i generira konkretnu Migration instancu s Up/Down SQL-om.
-/// Pretpostavke radi jednostavnosti:
-///   - preimenovanje stupaca se ne detektira (tretira se kao drop + add)
-///   - promjena PK se ne podržava
-/// </summary>
+/*
+Uspoređuje EntityMetadata s trenutnim stanjem baze (SchemaInspector)
+i generira konkretnu Migration instancu s Up/Down SQL-om.
+Pretpostavke radi jednostavnosti:
+  - preimenovanje stupaca se ne detektira (tretira se kao drop + add)
+  - promjena PK se ne podržava
+*/
 public class MigrationGenerator
 {
     private readonly SchemaInspector _inspector;
@@ -23,10 +23,10 @@ public class MigrationGenerator
         _attributeProcessor = AttributeProcessorFactory.Create();
     }
 
-    /// <summary>
-    /// Generira Migration za razliku između zadanog skupa entiteta i baze.
-    /// Vraća null ako nema razlika.
-    /// </summary>
+    /*
+    Generira Migration za razliku između zadanog skupa entiteta i baze.
+    Vraća null ako nema razlika.
+    */
     public GeneratedMigration? GenerateDiff(IEnumerable<Type> entityTypes, string migrationName)
     {
         var existingTables  = _inspector.GetTableNames()
@@ -184,10 +184,10 @@ public class MigrationGenerator
         return sb.ToString();
     }
 
-    /// <summary>
-    /// Grubo uspoređuje SQL tip iz metadataka s PostgreSQL tipom iz information_schema.
-    /// information_schema vraća "character varying" za VARCHAR, "integer" za INT, itd.
-    /// </summary>
+    /*
+    Grubo uspoređuje SQL tip iz metadataka s PostgreSQL tipom iz information_schema.
+    information_schema vraća "character varying" za VARCHAR, "integer" za INT, itd.
+    */
     private static bool SqlTypesCompatible(string metaType, string dbType)
     {
         var normalizedMeta = NormalizeSqlType(metaType);

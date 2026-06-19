@@ -3,11 +3,11 @@ using ORM.Core.Metadata;
 
 namespace ORM.Core.AttributeHandling.Handlers;
 
-/// <summary>
-/// Obrađuje [ForeignKey] na navigacijskim svojstvima.
-/// Sam FK constraint (REFERENCES tablica(stupac)) generira DDL generator
-/// jer treba znati ciljnu tablicu — ovaj handler samo validira da FK property postoji.
-/// </summary>
+/*
+Obrađuje [ForeignKey] na navigacijskim svojstvima.
+Sam FK constraint (REFERENCES tablica(stupac)) generira DDL generator
+jer treba znati ciljnu tablicu — ovaj handler samo validira da FK property postoji.
+*/
 public class ForeignKeyAttributeHandler : IAttributeHandler
 {
     public bool CanHandle(Attribute attribute) => attribute is ForeignKeyAttribute;

@@ -2,9 +2,9 @@ namespace ORM.Core.AttributeHandling;
 
 public interface IAttributeHandler
 {
-    /// <summary>Vraća true ako ovaj handler zna obraditi dani atribut.</summary>
+    // Vraća true ako ovaj handler zna obraditi dani atribut.
     bool CanHandle(Attribute attribute);
 
-    /// <summary>Primjenjuje logiku atributa i upisuje rezultate u kontekst.</summary>
+    // Primjenjuje logiku atributa i upisuje rezultate u kontekst.
     void Process(Attribute attribute, AttributeContext context);
 }

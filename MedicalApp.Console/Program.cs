@@ -10,15 +10,18 @@ var connectionString = "Host=localhost;Port=5432;Username=admin;Password=admin;D
 System.Console.WriteLine("Pokretanje Medicinskog sustava...");
 
 // ── Migracije ─────────────────────────────────────────────────────────────────
-// Koristimo zasebnu konekciju za migration runner jer DbContext upravlja svojom.
+// Zasebna konekcija za MigrationRunner jer DbContext upravlja svojom.
 using var migrationConnection = new NpgsqlConnection(connectionString);
 migrationConnection.Open();
 
-var runner = new MigrationRunner(migrationConnection);
+var runner   = new MigrationRunner(migrationConnection);
+var assembly = Assembly.GetExecutingAssembly();
 
-// Automatski generiramo i primjenjujemo diff migraciju pri svakom pokretanju
-var generator = new MigrationGenerator(migrationConnection);
+// ── [TOGGLE] Auto-diff migracija ──────────────────────────────────────────────
+// Uspoređuje entity klase s trenutnim stanjem baze i nudi primjenu razlika.
+// Komentiraj cijeli blok ako ne želiš provjeru sheme pri pokretanju.
 
+var generator   = new MigrationGenerator(migrationConnection);
 var entityTypes = new[]
 {
     typeof(Lijecnik),
@@ -29,11 +32,12 @@ var entityTypes = new[]
     typeof(SpecijalistickiPregled)
 };
 
-var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+var timestamp     = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 var diffMigration = generator.GenerateDiff(entityTypes, $"{timestamp}_AutoDiff");
 
 if (diffMigration is not null)
 {
+    runner.RegisterMigration(diffMigration); // dostupno za rollback u izborniku
     System.Console.WriteLine("\nPronadene promjene sheme:");
     diffMigration.Preview();
     System.Console.Write("\nPrimijeni migraciju? (d/n): ");
@@ -45,12 +49,16 @@ else
     System.Console.WriteLine("Shema je aktualna — nema pending migracija.");
 }
 
-// Ručno pisane migracije iz konzolnog projekta (npr. seed podataka)
-runner.Migrate(Assembly.GetExecutingAssembly());
+// ── [TOGGLE] Ručno pisane migracije iz ovog projekta ─────────────────────────
+// Pronalazi sve klase koje nasljeđuju Migration u ovom assemblyu i izvršava
+// one koje još nisu primijenjene (evidencija u __Migrations tablici).
+// Komentiraj ako nemaš ručno pisanih migracija ili ih ne želiš primjenjivati.
+
+runner.Migrate(assembly);
 
 // ── DbContext & seed liječnika ────────────────────────────────────────────────
 using var ctx = new MedicalDbContext(connectionString);
 LijecnikSeeder.SeedAkoPotrebno(ctx);
 
 // ── Glavni izbornik ───────────────────────────────────────────────────────────
-GlavniIzbornik.Pokreni(ctx);
+GlavniIzbornik.Pokreni(ctx, runner, assembly);

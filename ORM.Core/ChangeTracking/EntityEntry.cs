@@ -3,21 +3,21 @@ using System.Reflection;
 
 namespace ORM.Core.ChangeTracking;
 
-/// <summary>
-/// Prati jedan entitet: drži referencu na objekt, njegovo trenutno stanje
-/// i snapshot originalnih vrijednosti dohvaćenih iz baze.
-/// DetectChanges() uspoređuje snapshot s trenutnim vrijednostima.
-/// </summary>
+/*
+Prati jedan entitet: drži referencu na objekt, njegovo trenutno stanje
+i snapshot originalnih vrijednosti dohvaćenih iz baze.
+DetectChanges() uspoređuje snapshot s trenutnim vrijednostima.
+*/
 public class EntityEntry
 {
     public object Entity { get; }
     public EntityState State { get; internal set; }
     public EntityMetadata Metadata { get; }
 
-    /// <summary>
-    /// Snapshot vrijednosti u trenutku praćenja (nakon dohvata iz baze ili SaveChanges).
-    /// Ključ je ime propertyja, vrijednost je kopija originalnog podatka.
-    /// </summary>
+    /*
+    Snapshot vrijednosti u trenutku praćenja (nakon dohvata iz baze ili SaveChanges).
+    Ključ je ime propertyja, vrijednost je kopija originalnog podatka.
+    */
     private Dictionary<string, object?> _originalValues = [];
 
     public EntityEntry(object entity, EntityState state, EntityMetadata metadata)
@@ -30,7 +30,7 @@ public class EntityEntry
             TakeSnapshot();
     }
 
-    /// <summary>Sprema trenutne vrijednosti kao novi snapshot (poziva se nakon SaveChanges).</summary>
+    // Sprema trenutne vrijednosti kao novi snapshot (poziva se nakon SaveChanges).
     internal void TakeSnapshot()
     {
         _originalValues = Metadata.Columns
@@ -39,10 +39,10 @@ public class EntityEntry
                 col => col.Property.GetValue(Entity));
     }
 
-    /// <summary>
-    /// Uspoređuje snapshot s trenutnim vrijednostima.
-    /// Ako postoji razlika, postavlja State na Modified.
-    /// </summary>
+    /*
+    Uspoređuje snapshot s trenutnim vrijednostima.
+    Ako postoji razlika, postavlja State na Modified.
+    */
     internal void DetectChanges()
     {
         if (State is EntityState.Added or EntityState.Deleted)
@@ -63,7 +63,7 @@ public class EntityEntry
         }
     }
 
-    /// <summary>Imena propertyja čije se vrijednosti razlikuju od snapshota.</summary>
+    // Imena propertyja čije se vrijednosti razlikuju od snapshota.
     public IEnumerable<string> GetModifiedProperties()
     {
         foreach (var col in Metadata.Columns)

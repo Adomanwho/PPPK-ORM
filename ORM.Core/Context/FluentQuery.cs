@@ -4,11 +4,11 @@ using System.Linq.Expressions;
 
 namespace ORM.Core.Context;
 
-/// <summary>
-/// Posrednički objekt između DbSet i QueryBuilder.
-/// Omogućuje ulančavanje Where/OrderBy/Include/Skip/Take
-/// bez izvršavanja upita sve do poziva ToList().
-/// </summary>
+/*
+Posrednički objekt između DbSet i QueryBuilder.
+Omogućuje ulančavanje Where/OrderBy/Include/Skip/Take
+bez izvršavanja upita sve do poziva ToList().
+*/
 public class FluentQuery<T> where T : class, new()
 {
     private readonly DbSet<T> _dbSet;
@@ -56,10 +56,10 @@ public class FluentQuery<T> where T : class, new()
         return this;
     }
 
-    /// <summary>Izvršava upit i vraća listu rezultata.</summary>
+    // Izvršava upit i vraća listu rezultata.
     public List<T> ToList() => _dbSet.BuildAndExecute(_builder);
 
-    /// <summary>Vraća prvi rezultat ili null.</summary>
+    // Vraća prvi rezultat ili null.
     public T? FirstOrDefault()
     {
         _builder.Take(1);

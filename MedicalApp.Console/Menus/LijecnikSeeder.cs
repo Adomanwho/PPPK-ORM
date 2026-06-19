@@ -5,10 +5,10 @@ namespace MedicalApp.Console.Menus;
 
 public static class LijecnikSeeder
 {
-    /// <summary>
-    /// Ako u bazi nema niti jednog liječnika, traži unos pri pokretanju aplikacije.
-    /// Poziva se samo jednom — pri prvom pokretanju.
-    /// </summary>
+    /*
+     Ako u bazi nema niti jednog liječnika, traži unos pri pokretanju aplikacije.
+     Poziva se samo jednom — pri prvom pokretanju.
+    */
     public static void SeedAkoPotrebno(MedicalDbContext ctx)
     {
         var postoje = ctx.Lijecnici.ToList();

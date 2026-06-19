@@ -1,9 +1,9 @@
 namespace ORM.Core.Attributes;
 
-/// <summary>
-/// Definira maksimalnu duljinu string stupca → VARCHAR(n).
-/// Bez ovog atributa string se mapira na TEXT.
-/// </summary>
+/*
+Definira maksimalnu duljinu string stupca → VARCHAR(n).
+Bez ovog atributa string se mapira na TEXT.
+*/
 [AttributeUsage(AttributeTargets.Property, Inherited = false)]
 public sealed class MaxLengthAttribute : Attribute
 {

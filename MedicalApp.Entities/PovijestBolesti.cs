@@ -27,7 +27,7 @@ public class PovijestBolesti
     [Column("DatumOd")]
     public DateTime DatumOd { get; set; }
 
-    /// <summary>Null znači da stanje još traje.</summary>
+    //Null znači da stanje još traje.
     [Column("DatumDo")]
     public DateTime? DatumDo { get; set; }
 

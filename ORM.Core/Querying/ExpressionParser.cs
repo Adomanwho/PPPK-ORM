@@ -5,10 +5,10 @@ using System.Reflection;
 
 namespace ORM.Core.Querying;
 
-/// <summary>
-/// Rekurzivno hoda Expression stablo i gradi SQL WHERE fragment s parametrima.
-/// Podržava: ==, !=, &lt;, &lt;=, &gt;, &gt;=, &amp;&amp;, ||, !, member access, konstante, null provjere.
-/// </summary>
+/*
+Rekurzivno hoda Expression stablo i gradi SQL WHERE fragment s parametrima.
+Podržava: ==, !=, <, <=, >, >=, &&, ||, !, member access, konstante, null provjere.
+*/
 public class ExpressionParser
 {
     private readonly EntityMetadata _metadata;

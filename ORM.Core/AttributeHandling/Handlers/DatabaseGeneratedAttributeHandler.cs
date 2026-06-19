@@ -2,10 +2,10 @@ using ORM.Core.Attributes;
 
 namespace ORM.Core.AttributeHandling.Handlers;
 
-/// <summary>
-/// Obrađuje [DatabaseGenerated(Identity)] — dodaje GENERATED ALWAYS AS IDENTITY fragment.
-/// Postgres koristi ovaj standard umjesto SERIAL-a od verzije 10.
-/// </summary>
+/*
+Obrađuje [DatabaseGenerated(Identity)] — dodaje GENERATED ALWAYS AS IDENTITY fragment.
+Postgres koristi ovaj standard umjesto SERIAL-a od verzije 10.
+*/
 public class DatabaseGeneratedAttributeHandler : IAttributeHandler
 {
     public bool CanHandle(Attribute attribute) => attribute is DatabaseGeneratedAttribute;

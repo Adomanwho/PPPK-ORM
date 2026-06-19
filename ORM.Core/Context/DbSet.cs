@@ -7,11 +7,11 @@ using System.Text;
 
 namespace ORM.Core.Context;
 
-/// <summary>
-/// Predstavlja skup entiteta tipa T u bazi.
-/// Pruža CRUD operacije, filtriranje, sortiranje i eager loading.
-/// Sve promjene prolaze kroz ChangeTracker koji generira SQL pri SaveChanges.
-/// </summary>
+/*
+Predstavlja skup entiteta tipa T u bazi.
+Pruža CRUD operacije, filtriranje, sortiranje i eager loading.
+Sve promjene prolaze kroz ChangeTracker koji generira SQL pri SaveChanges.
+*/
 public class DbSet<T> where T : class, new()
 {
     private readonly DbContext _context;
@@ -59,7 +59,7 @@ public class DbSet<T> where T : class, new()
 
     // ── Fluent query API ─────────────────────────────────────────────────────
 
-    /// <summary>Vraća FluentQuery koji se može dalje ulančavati (Where, OrderBy, Include, ...).</summary>
+    // Vraća FluentQuery koji se može dalje ulančavati (Where, OrderBy, Include, ...).
     public FluentQuery<T> Where(Expression<Func<T, bool>> predicate) =>
         new FluentQuery<T>(this, _metadata).Where(predicate);
 
@@ -123,10 +123,10 @@ public class DbSet<T> where T : class, new()
         }
     }
 
-    /// <summary>
-    /// Reference (npr. PovijestBolesti.Pacijent): dohvati jedan entitet po FK vrijednosti.
-    /// SELECT * FROM "Pacijenti" WHERE "Id" IN (fk1, fk2, ...)
-    /// </summary>
+    /*
+    Reference (npr. PovijestBolesti.Pacijent): dohvati jedan entitet po FK vrijednosti.
+    SELECT * FROM "Pacijenti" WHERE "Id" IN (fk1, fk2, ...)
+    */
     private void LoadReferenceNavigation(List<T> entities, NavigationMetadata navMeta)
     {
         var fkProp = typeof(T).GetProperty(navMeta.ForeignKeyPropertyName);
@@ -168,10 +168,10 @@ public class DbSet<T> where T : class, new()
         }
     }
 
-    /// <summary>
-    /// Collection (npr. Pacijent.PovijestBolesti): dohvati sve retke s matching FK.
-    /// SELECT * FROM "PovijestBolesti" WHERE "PacijentId" IN (id1, id2, ...)
-    /// </summary>
+    /*
+    Collection (npr. Pacijent.PovijestBolesti): dohvati sve retke s matching FK.
+    SELECT * FROM "PovijestBolesti" WHERE "PacijentId" IN (id1, id2, ...)
+    */
     private void LoadCollectionNavigation(List<T> entities, NavigationMetadata navMeta)
     {
         var thisPk = _metadata.PrimaryKey;
@@ -232,7 +232,7 @@ public class DbSet<T> where T : class, new()
         }
     }
 
-    /// <summary>Materijalizira nepoznati tip (za eager loading related entiteta).</summary>
+    // Materijalizira nepoznati tip (za eager loading related entiteta).
     private static List<object> MaterializeUntyped(NpgsqlDataReader reader, EntityMetadata meta)
     {
         var results   = new List<object>();

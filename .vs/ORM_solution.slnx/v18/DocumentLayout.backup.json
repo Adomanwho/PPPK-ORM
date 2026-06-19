@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|c:\\users\\lovre\\desktop\\faks sve\\algebra 5. semestar\\pristup podacima iz programskog koda\\projekti\\medicalapp.console\\medicalapp.console\\menus\\lijecnikseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|solutionrelative:medicalapp.console\\menus\\lijecnikseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|c:\\users\\lovre\\desktop\\faks sve\\algebra 5. semestar\\pristup podacima iz programskog koda\\projekti\\medicalapp.console\\medicalapp.console\\menus\\glavniizbornik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|solutionrelative:medicalapp.console\\menus\\glavniizbornik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|c:\\users\\lovre\\desktop\\faks sve\\algebra 5. semestar\\pristup podacima iz programskog koda\\projekti\\medicalapp.console\\medicalapp.console\\menus\\pacijentizbornik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71342F48-D501-1F12-7D0E-A33C06C49C33}|MedicalApp.Console\\MedicalApp.Console.csproj|solutionrelative:medicalapp.console\\menus\\pacijentizbornik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LijecnikSeeder.cs",
-              "DocumentMoniker": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Menus\\LijecnikSeeder.cs",
-              "RelativeDocumentMoniker": "MedicalApp.Console\\Menus\\LijecnikSeeder.cs",
-              "ToolTip": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Menus\\LijecnikSeeder.cs",
-              "RelativeToolTip": "MedicalApp.Console\\Menus\\LijecnikSeeder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-18T22:27:31.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GlavniIzbornik.cs",
-              "DocumentMoniker": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Menus\\GlavniIzbornik.cs",
-              "RelativeDocumentMoniker": "MedicalApp.Console\\Menus\\GlavniIzbornik.cs",
-              "ToolTip": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Menus\\GlavniIzbornik.cs",
-              "RelativeToolTip": "MedicalApp.Console\\Menus\\GlavniIzbornik.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-18T22:27:22.656Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PacijentIzbornik.cs",
-              "DocumentMoniker": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Menus\\PacijentIzbornik.cs",
-              "RelativeDocumentMoniker": "MedicalApp.Console\\Menus\\PacijentIzbornik.cs",
-              "ToolTip": "C:\\Users\\Lovre\\Desktop\\Faks sve\\Algebra 5. semestar\\Pristup podacima iz programskog koda\\Projekti\\MedicalApp.Console\\MedicalApp.Console\\Menus\\PacijentIzbornik.cs",
-              "RelativeToolTip": "MedicalApp.Console\\Menus\\PacijentIzbornik.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwDAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-18T22:18:32.808Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

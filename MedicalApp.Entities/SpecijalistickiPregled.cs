@@ -15,12 +15,12 @@ public class SpecijalistickiPregled
     [Column("PacijentId")]
     public int PacijentId { get; set; }
 
-    /// <summary>Liječnik koji zakazuje pregled.</summary>
+    //Liječnik koji zakazuje pregled.
     [Required]
     [Column("LijecnikId")]
     public int LijecnikId { get; set; }
 
-    /// <summary>Specijalist koji provodi pregled.</summary>
+    //Specijalist koji provodi pregled.
     [Required]
     [Column("LijecnikSpecijalistId")]
     public int LijecnikSpecijalistId { get; set; }

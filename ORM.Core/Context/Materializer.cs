@@ -3,10 +3,10 @@ using ORM.Core.Metadata;
 
 namespace ORM.Core.Context;
 
-/// <summary>
-/// Čita retke iz NpgsqlDataReader-a i kreira instance entiteta putem refleksije.
-/// Mapira vrijednosti stupaca na propertyje koristeći EntityMetadata.
-/// </summary>
+/*
+Čita retke iz NpgsqlDataReader-a i kreira instance entiteta putem refleksije.
+Mapira vrijednosti stupaca na propertyje koristeći EntityMetadata.
+*/
 public static class Materializer
 {
     public static List<T> Materialize<T>(NpgsqlDataReader reader, EntityMetadata metadata)

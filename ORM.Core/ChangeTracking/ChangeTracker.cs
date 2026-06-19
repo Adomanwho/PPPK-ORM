@@ -2,11 +2,11 @@ using ORM.Core.Metadata;
 
 namespace ORM.Core.ChangeTracking;
 
-/// <summary>
-/// Centralni registar praćenih entiteta unutar jednog DbContext-a.
-/// Koristi referencijalni identitet objekta (RuntimeHelpers.GetHashCode) kao ključ
-/// kako bi mogao pratiti isti objekt bez obzira na override od Equals/GetHashCode.
-/// </summary>
+/*
+Centralni registar praćenih entiteta unutar jednog DbContext-a.
+Koristi referencijalni identitet objekta (RuntimeHelpers.GetHashCode) kao ključ
+kako bi mogao pratiti isti objekt bez obzira na override od Equals/GetHashCode.
+*/
 public class ChangeTracker
 {
     // Koristimo ConditionalWeakTable da ne držimo objekte živima ako ih nitko drugi ne referencira
@@ -14,7 +14,7 @@ public class ChangeTracker
 
     // ── Praćenje ─────────────────────────────────────────────────────────────
 
-    /// <summary>Počni pratiti entitet kao Unchanged (dohvaćen iz baze).</summary>
+    // Počni pratiti entitet kao Unchanged (dohvaćen iz baze).
     public EntityEntry Track(object entity, EntityMetadata metadata)
     {
         var key = GetKey(entity);
@@ -26,7 +26,7 @@ public class ChangeTracker
         return entry;
     }
 
-    /// <summary>Označi entitet kao Added (novi, čeka INSERT).</summary>
+    // Označi entitet kao Added (novi, čeka INSERT).
     public EntityEntry Add(object entity, EntityMetadata metadata)
     {
         var key   = GetKey(entity);
@@ -35,7 +35,7 @@ public class ChangeTracker
         return entry;
     }
 
-    /// <summary>Označi praćeni entitet kao Deleted (čeka DELETE).</summary>
+    // Označi praćeni entitet kao Deleted (čeka DELETE).
     public EntityEntry Remove(object entity, EntityMetadata metadata)
     {
         var key = GetKey(entity);
@@ -54,10 +54,10 @@ public class ChangeTracker
 
     // ── Detekcija promjena ───────────────────────────────────────────────────
 
-    /// <summary>
-    /// Prolazi sve Unchanged entitete i uspoređuje snapshot s trenutnim vrijednostima.
-    /// Entitete koji imaju promjene prebacuje u Modified.
-    /// </summary>
+    /*
+    Prolazi sve Unchanged entitete i uspoređuje snapshot s trenutnim vrijednostima.
+    Entitete koji imaju promjene prebacuje u Modified.
+    */
     public void DetectChanges()
     {
         foreach (var entry in _entries.Values)
@@ -77,10 +77,10 @@ public class ChangeTracker
 
     // ── Nakon SaveChanges ────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Nakon uspješnog SaveChanges: Added → Unchanged (s novim snapshotom),
-    /// Modified → Unchanged (s novim snapshotom), Deleted → ukloni iz trackera.
-    /// </summary>
+    /*
+    Nakon uspješnog SaveChanges: Added → Unchanged (s novim snapshotom),
+    Modified → Unchanged (s novim snapshotom), Deleted → ukloni iz trackera.
+    */
     public void AcceptChanges()
     {
         var toRemove = new List<int>();

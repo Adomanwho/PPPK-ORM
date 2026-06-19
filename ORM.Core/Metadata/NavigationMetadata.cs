@@ -4,27 +4,25 @@ namespace ORM.Core.Metadata;
 
 public enum NavigationKind
 {
-    /// <summary>Referenca na jedan entitet (npr. Lijecnik na PovijestBolesti).</summary>
-    Reference,
-    /// <summary>Kolekcija entiteta (npr. ICollection&lt;PovijestBolesti&gt; na Lijecnik).</summary>
-    Collection
+    Reference,   // referenca na jedan entitet (npr. Lijecnik na PovijestBolesti)
+    Collection   // kolekcija entiteta (npr. ICollection<PovijestBolesti> na Lijecnik)
 }
 
 public class NavigationMetadata
 {
     public PropertyInfo Property { get; init; } = null!;
 
-    /// <summary>Tip entiteta na koji navigacija pokazuje.</summary>
+    // Tip entiteta na koji navigacija pokazuje.
     public Type TargetEntityType { get; init; } = null!;
 
     public NavigationKind Kind { get; init; }
 
-    /// <summary>
-    /// Ime FK propertyja na ovoj klasi (za Reference) ili na ciljnoj klasi (za Collection).
-    /// Određuje se iz [ForeignKey] ili konvencijom (NazivTipa + "Id").
-    /// </summary>
+    /*
+    Ime FK propertyja na ovoj klasi (za Reference) ili na ciljnoj klasi (za Collection).
+    Određuje se iz [ForeignKey] ili konvencijom (NazivTipa + "Id").
+    */
     public string ForeignKeyPropertyName { get; init; } = null!;
 
-    /// <summary>Ime suprotnog navigacijskog propertyja (iz [InverseProperty]).</summary>
+    // Ime suprotnog navigacijskog propertyja (iz [InverseProperty]).
     public string? InversePropertyName { get; init; }
 }

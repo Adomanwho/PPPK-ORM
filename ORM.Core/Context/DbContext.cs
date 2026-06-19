@@ -7,12 +7,12 @@ using System.Text;
 
 namespace ORM.Core.Context;
 
-/// <summary>
-/// Apstraktna baza svakog konkretnog konteksta.
-/// Upravlja konekcijom, ChangeTracker-om i SaveChanges logikom.
-/// Konkretna klasa deklarira DbSet&lt;T&gt; propertyje koji se inicijaliziraju
-/// automatski u konstruktoru putem refleksije.
-/// </summary>
+/*
+Apstraktna baza svakog konkretnog konteksta.
+Upravlja konekcijom, ChangeTracker-om i SaveChanges logikom.
+Konkretna klasa deklarira DbSet<T> propertyje koji se inicijaliziraju
+automatski u konstruktoru putem refleksije.
+*/
 public abstract class DbContext : IDisposable
 {
     private readonly NpgsqlConnection _connection;
@@ -31,10 +31,10 @@ public abstract class DbContext : IDisposable
 
     // ── DbSet inicijalizacija ────────────────────────────────────────────────
 
-    /// <summary>
-    /// Putem refleksije pronalazi sve DbSet&lt;T&gt; propertyje na konkretnoj klasi
-    /// i kreira instance s ispravnim metapodacima.
-    /// </summary>
+    /*
+    Putem refleksije pronalazi sve DbSet<T> propertyje na konkretnoj klasi
+    i kreira instance s ispravnim metapodacima.
+    */
     private void InitializeDbSets()
     {
         var dbSetType = typeof(DbSet<>);
@@ -66,11 +66,11 @@ public abstract class DbContext : IDisposable
 
     // ── SaveChanges ──────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Detektira sve promjene, generira i izvršava INSERT/UPDATE/DELETE SQL,
-    /// zatim poziva AcceptChanges() da resetira tracker.
-    /// Sve se izvršava unutar jedne transakcije.
-    /// </summary>
+    /*
+    Detektira sve promjene, generira i izvršava INSERT/UPDATE/DELETE SQL,
+    zatim poziva AcceptChanges() da resetira tracker.
+    Sve se izvršava unutar jedne transakcije.
+    */
     public int SaveChanges()
     {
         ChangeTracker.DetectChanges();
@@ -214,10 +214,10 @@ public abstract class DbContext : IDisposable
 
     // ── EnsureCreated ────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Kreira tablice za sve DbSet&lt;T&gt; propertyje ako još ne postoje.
-    /// Koristi AttributeProcessor za generiranje constraint fragmenata.
-    /// </summary>
+    /*
+    Kreira tablice za sve DbSet<T> propertyje ako još ne postoje.
+    Koristi AttributeProcessor za generiranje constraint fragmenata.
+    */
     public void EnsureCreated()
     {
         var dbSetType = typeof(DbSet<>);
